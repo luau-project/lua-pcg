@@ -33,7 +33,7 @@ local function pcg32_100_numbers()
     local rng = pcg32.new(initstate_pcg32, initseq_pcg32)
 
     for i = 1, 100 do
-        print(("[%03i] 0x%08X"):format(i, rng:next()))
+        print(("[%03i]"):format(i), rng:next())
     end
 
     rng:close()
@@ -49,7 +49,7 @@ local function pcg32_100_numbers_from_bytearray()
     local rng = pcg32.new(initstate_pcg32_bytearray, initseq_pcg32_bytearray)
 
     for i = 1, 100 do
-        print(("[%03i] 0x%08X"):format(i, rng:next()))
+        print(("[%03i]"):format(i), rng:next())
     end
 
     rng:close()
@@ -65,7 +65,7 @@ local function pcg32_random_100_numbers()
     local rng = pcg32.new()
 
     for i = 1, 100 do
-        print(("[%03i] 0x%08X"):format(i, rng:next()))
+        print(("[%03i]"):format(i), rng:next())
     end
 
     rng:close()

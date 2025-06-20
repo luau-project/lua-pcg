@@ -34,7 +34,7 @@ local function pcg64_100_numbers()
     local rng = pcg64.new(initstate_pcg64, initseq_pcg64)
     
     for i = 1, 100 do
-        print(("[%03i] 0x%016X"):format(i, rng:next()))
+        print(("[%03i]"):format(i), rng:next())
     end
 
     rng:close()
@@ -50,7 +50,7 @@ local function pcg64_100_numbers_from_bytearray()
     local rng = pcg64.new(initstate_pcg64_bytearray, initseq_pcg64_bytearray)
 
     for i = 1, 100 do
-        print(("[%03i] 0x%016X"):format(i, rng:next()))
+        print(("[%03i]"):format(i), rng:next())
     end
 
     rng:close()
@@ -66,7 +66,7 @@ local function pcg64_random_100_numbers()
     local rng = pcg64.new()
 
     for i = 1, 100 do
-        print(("[%03i] 0x%016X"):format(i, rng:next()))
+        print(("[%03i]"):format(i), rng:next())
     end
 
     rng:close()
