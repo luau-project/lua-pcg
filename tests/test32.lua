@@ -156,7 +156,7 @@ local function pcg32_assert_next()
     local rng = pcg32.new(initstate_pcg32, initseq_pcg32)
 
     local i = 1
-    local pcg_file = assert(io.open("tests/next32.txt", "rb"), "Unable to open next32.txt file")
+    local pcg_file = assert(io.open("tests/next32.txt", "r"), "Unable to open next32.txt file")
     for line in pcg_file:lines() do
         local bytes = rng:nextbytes()
         if (#bytes ~= 4) then
@@ -190,7 +190,7 @@ local function pcg32_assert_next_from_bytearray()
     local rng = pcg32.new(initstate_pcg32_bytearray, initseq_pcg32_bytearray)
 
     local i = 1
-    local pcg_file = assert(io.open("tests/next32.txt", "rb"), "Unable to open next32.txt file")
+    local pcg_file = assert(io.open("tests/next32.txt", "r"), "Unable to open next32.txt file")
     for line in pcg_file:lines() do
         local bytes = rng:nextbytes()
         if (#bytes ~= 4) then
@@ -223,7 +223,7 @@ local function pcg32_assert_advance()
 
     local rng = pcg32.new(initstate_pcg32, initseq_pcg32)
 
-    local pcg_file = assert(io.open("tests/adv32.txt", "rb"), "Unable to open adv32.txt file")
+    local pcg_file = assert(io.open("tests/adv32.txt", "r"), "Unable to open adv32.txt file")
     for line in pcg_file:lines() do
 
         local i_str, delta, n = line:match("%[(%d+)%] delta: (0[xX][0-9a-fA-F]+), next: (0[xX][0-9a-fA-F]+)")
