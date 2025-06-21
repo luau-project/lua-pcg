@@ -10,7 +10,7 @@ description = {
    homepage = "https://github.com/luau-project/lua-pcg",
    license = "MIT",
    summary = [[PCG random number generators for Lua]],
-   detailed = [=[PCG is a family of simple fast space-efficient statistically good algorithms for random number generation.
+   detailed = [=[lua-pcg implements methods of the PCG library for Lua. PCG is a family of simple fast space-efficient statistically good algorithms designed in 2014 by Dr. M.E. O'Neill for random number generation.
 
 Visit the repository for more information.]=]
 }
