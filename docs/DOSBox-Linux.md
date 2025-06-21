@@ -402,7 +402,7 @@ So, go ahead and launch DOSBox.
 
 You should see this startup screen
 
-![dosbox-startup](./images/linux/001-dosbox-startup.png)
+![001-dosbox-startup](https://github.com/user-attachments/assets/b88ff0ee-6a48-47e5-b3d7-d16982abc070)
 
 ### Install Turbo C++
 
@@ -418,29 +418,29 @@ You should see this startup screen
     INSTALL.EXE
     ```
 
-    ![invoke-install](./images/linux/002-cd-tc-src-invoke-install.png)
+    ![002-cd-tc-src-invoke-install](https://github.com/user-attachments/assets/23b61758-4975-45f6-aa81-dc0d19cf0c39)
 
-3. Once it loaded, you should see this screen
+4. Once it loaded, you should see this screen
 
-    ![install-initial-screen](./images/linux/003-install-initial-screen.png)
-
-    Press enter.
-
-4. When asked for the SOURCE drive to use, type `C`:
-
-    ![enter-drive-c](./images/linux/004-enter-drive-c.png)
+    ![003-install-initial-screen](https://github.com/user-attachments/assets/5e028cd2-bbeb-4298-bf3f-5266d93a2702)
 
     Press enter.
 
-5. The installation manager of Turbo C++ will ask where the source files can be found (directory containing zip files). In case it is not there, type `\TC-SRC`:
+6. When asked for the SOURCE drive to use, type `C`:
 
-    ![tc-src-directory](./images/linux/005-tc-src-directory.png)
+    ![004-enter-drive-c](https://github.com/user-attachments/assets/310aada3-aa88-488d-bd9d-b395745e6584)
 
     Press enter.
 
-6. The next screen asks for you to define several paths:
+8. The installation manager of Turbo C++ will ask where the source files can be found (directory containing zip files). In case it is not there, type `\TC-SRC`:
 
-    ![initial-turbo-cpp-install-directory](./images/linux/006-initial-turbo-cpp-install-directory.png)
+    ![005-tc-src-directory](https://github.com/user-attachments/assets/ca9ddd3e-f995-420a-9fc5-3639a6d68b80)
+
+    Press enter.
+
+10. The next screen asks for you to define several paths:
+
+    ![006-initial-turbo-cpp-install-directory](https://github.com/user-attachments/assets/178b780d-c0a3-491b-bff8-abde650ef12e)
 
     We are going to accept the defaults. Then hit the `arrow down` on your keyboard to select `Start Installation` option.
 
@@ -448,23 +448,23 @@ You should see this startup screen
     > 
     > **DO NOT** change defaults. Our `lua-bld.bat` depends on these paths.
 
-7. Once the `Start Installation` option is selected, hit enter:
+12. Once the `Start Installation` option is selected, hit enter:
 
-    ![scroll-down-start-installation](./images/linux/007-scroll-down-start-installation.png)
+    ![007-scroll-down-start-installation](https://github.com/user-attachments/assets/b13c656c-bea5-48b8-983a-90fe89bd8223)
 
-8. On a successfull installation, we see this screen:
+14. On a successfull installation, we see this screen:
 
-    ![installation-success](./images/linux/008-installation-success.png)
-
-    Press enter.
-
-9. On the next screen, we can see this:
-
-    ![after-pressing-enter](./images/linux/009-after-pressing-enter.png)
+    ![008-installation-success](https://github.com/user-attachments/assets/ca899ad4-28fb-4029-9d44-7b32ca47e774)
 
     Press enter.
 
-10. At this moment, everything should have been installed. Run the command
+16. On the next screen, we can see this:
+
+    ![009-after-pressing-enter](https://github.com/user-attachments/assets/b6cd4d16-d21e-497a-81b5-545c5ef52fb2)
+
+    Press enter.
+
+18. At this moment, everything should have been installed. Run the command
 
     ```batch
     tcc
@@ -472,13 +472,13 @@ You should see this startup screen
 
     to test Turbo C++ compiler:
 
-    ![test-turbo-c-compiler](./images/linux/010-test-turbo-c-compiler.png)
+    ![010-test-turbo-c-compiler](https://github.com/user-attachments/assets/e06ce61a-ba10-46e7-a742-dd31cc17a006)
 
-11. Check Turbo C++ compiler output:
+20. Check Turbo C++ compiler output:
 
-    ![turbo-c-compiler-output](./images/linux/011-turbo-c-compiler-output.png)
+    ![011-turbo-c-compiler-output](https://github.com/user-attachments/assets/c996b162-d434-44d5-a32b-2d74c6a19de2)
 
-12. It is a good idea to also test Turbo Link (the linker):
+22. It is a good idea to also test Turbo Link (the linker):
 
     ```batch
     tlink
@@ -486,7 +486,7 @@ You should see this startup screen
 
     You should see this output:
 
-    ![turbo-link-output](./images/linux/012-turbo-link-output.png)
+    ![012-turbo-link-output](https://github.com/user-attachments/assets/576338b6-4a85-4628-a0af-38aa4f628d2d)
 
 ### Build Lua 5.1.5 and lua-pcg
 
@@ -498,11 +498,11 @@ Now, we are going to build the Lua interpreter `lua.exe`.
     C:\LUA\LUA-BLD.BAT
     ```
 
-    ![call-lua-bld-bat](./images/linux/013-call-lua-bld-bat.png)
+    ![013-call-lua-bld-bat](https://github.com/user-attachments/assets/99e852bb-ea1a-4d6b-913d-e780313cf86d)
 
-2. If everything was successfull, you should see this screen:
+3. If everything was successfull, you should see this screen:
 
-    ![end-of-build](./images/linux/014-end-of-build.png)
+    ![014-end-of-build](https://github.com/user-attachments/assets/ea79f834-1d16-4b97-933f-2f11303c9d9c)
 
 ### Run simple tests on the Lua interpreter just built
 
@@ -514,17 +514,17 @@ Now, the Lua interpreter has been built merged with `lua-pcg`. Run some basic te
     lua -v
     ```
 
-    ![lua-version](./images/linux/015-lua-version.png)
+    ![015-lua-version](https://github.com/user-attachments/assets/b05a5ffe-9283-4f16-97a0-7bb247327da9)
 
-2. Run some code:
+3. Run some code:
 
     ```batch
     lua -e "for i = 1, 10 do print(i) end"
     ```
 
-    ![lua-for](./images/linux/016-lua-for.png)
+    ![016-lua-for](https://github.com/user-attachments/assets/879e1351-9adf-4986-b8ec-0b0214f00906)
 
-3. Check that `lua-pcg` was also bundled with Lua:
+5. Check that `lua-pcg` was also bundled with Lua:
 
     ```batch
     lua -e "print(pcg ~= nil and pcg.pcg32 ~= nil and pcg.pcg64 ~= nil)"
@@ -532,7 +532,7 @@ Now, the Lua interpreter has been built merged with `lua-pcg`. Run some basic te
 
     This should print `true` like the image below
 
-    ![lua-pcg-was-bundled](./images/linux/017-lua-pcg-was-bundled.png)
+    ![017-lua-pcg-was-bundled](https://github.com/user-attachments/assets/c0989d4d-ffb8-4c82-91b7-41c519565b4e)
 
 ### Run lua-pcg test suite
 
@@ -548,31 +548,32 @@ Since you have been properly warned that testing takes too long, go ahead if you
     cd C:\LUA-PCG
     ```
 
-    ![cd-lua-pcg](./images/linux/018-cd-lua-pcg.png)
+    ![018-cd-lua-pcg](https://github.com/user-attachments/assets/707b2d20-ce1d-4060-bcb4-944563afc4c3)
 
-2. Run `test32.lua` to test `pcg32` class:
+3. Run `test32.lua` to test `pcg32` class:
 
     ```batch
     lua TESTS\TEST32.LUA
     ```
 
-    ![run-test32](./images/linux/019-run-test32.png)
+    ![019-run-test32](https://github.com/user-attachments/assets/60b1bc75-ebcc-47c0-81cc-1a7a5e488a11)
 
     Now, it is going to take some decent amount of time (around 1h on my computer). If you are patient enough to wait them, at the end of the tests, you can see the following screen:
 
-    ![test32-completed](./images/linux/020-test32-completed.png)
+    ![020-test32-completed](https://github.com/user-attachments/assets/0741e1b7-c881-4832-a2ca-b3c0f47a6810)
 
-3. When it finishes, go ahead and `test64.lua` to test `pcg64` class:
+
+5. When it finishes, go ahead and `test64.lua` to test `pcg64` class:
 
     ```batch
     lua TESTS\TEST64.LUA
     ```
 
-    ![run-test64](./images/linux/021-run-test64.png)
+    ![021-run-test64](https://github.com/user-attachments/assets/82d8c195-cf50-4461-965f-5ffd81a6aeed)
 
     On my computer, it takes 7h or more to finish.
 
-4. In case any of the tests failed, please, open an issue.
+7. In case any of the tests failed, please, open an issue.
 
 ---
 
