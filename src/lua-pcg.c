@@ -2263,24 +2263,35 @@ static void lua_pcg_fill_with_random_bytes(void *ud, lua_pcg_u128 *v1, lua_pcg_u
 }
 
 /*
-** Dynamically allocate 'size' bytes using Lua's allocator
+** Dynamically allocate 'size' bytes
 */
 static void *lua_pcg_alloc(lua_State *L, size_t size)
 {
+#ifdef LUA_PCG_USE_LUA_ALLOC
     void *ud;
     lua_Alloc allocf = lua_getallocf(L, &ud);
     return allocf(ud, NULL, 0, size);
+#else
+    (void)L;
+    return malloc(size);
+#endif
 }
 
 /*
 ** Free the memory on 'ptr' which is holding 'size' bytes
-** previously allocated by Lua's allocator.
+** previously allocated.
 */
 static void lua_pcg_free(lua_State *L, void *ptr, size_t size)
 {
+#ifdef LUA_PCG_USE_LUA_ALLOC
     void *ud;
     lua_Alloc allocf = lua_getallocf(L, &ud);
     ((void)allocf(ud, ptr, size, 0));
+#else
+    (void)L;
+    (void)size;
+    return free(ptr);
+#endif
 }
 
 /* end of utility functions */
@@ -2306,7 +2317,7 @@ static void lua_pcg_free(lua_State *L, void *ptr, size_t size)
 **       some hard to spot alignment problems
 **       (see https://github.com/LuaJIT/LuaJIT/issues/1161 ).
 ** 
-**       Even with PUC-Lua interpreter, I've ran
+**       Even with PUC-Lua interpreter, on Linux with GCC, I've ran
 **       into such alignment issues, especially
 **       in the 'advance' function on lua_pcg64_random_t
 **       below for the (native system's provided) __int128.
@@ -2314,9 +2325,7 @@ static void lua_pcg_free(lua_State *L, void *ptr, size_t size)
 **       Thus, to avoid any possibility to run into
 **       such alignment issues, we wrap the
 **       'lua_pcg32_random_t' and allocate it
-**       using Lua's allocator, which seems to
-**       use the default 'malloc' under the hood
-**       and works well in all cases.
+**       using 'malloc' which works well in all cases.
 */
 typedef struct
 {
@@ -2538,7 +2547,7 @@ static const luaL_Reg lua_pcg_pcg32_funcs[] = {
 **       some hard to spot alignment problems
 **       (see https://github.com/LuaJIT/LuaJIT/issues/1161 ).
 ** 
-**       Even with PUC-Lua interpreter, I've ran
+**       Even with PUC-Lua interpreter, on Linux with GCC, I've ran
 **       into such alignment issues, especially
 **       in the 'advance' function on lua_pcg64_random_t
 **       below for the (native system's provided) __int128.
@@ -2546,9 +2555,7 @@ static const luaL_Reg lua_pcg_pcg32_funcs[] = {
 **       Thus, to avoid any possibility to run into
 **       such alignment issues, we wrap the
 **       'lua_pcg64_random_t' and allocate it
-**       using Lua's allocator, which seems to
-**       use the default 'malloc' under the hood
-**       and works well in all cases.
+**       using 'malloc' which works well in all cases.
 */
 typedef struct
 {

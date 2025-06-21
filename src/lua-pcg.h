@@ -29,6 +29,72 @@
 
 #define LUA_PCG_VERSION "0.0.1"
 
+/*
+** DISCLAIMER:
+** 
+** Since this library works
+** on the bit level to emulate
+** integer arithmetic, it is
+** critical to have a stable
+** memory allocator.
+** 
+** During the testing phase,
+** especially with LuaJIT 
+** compiled with MinGW-w64 on Windows,
+** issues related to memory
+** allocation (probably due alignment)
+** were detected, and were also solved
+** by defining -DLUAJIT_USE_SYSMALLOC
+** at LuaJIT building phase, even though
+** there is no certainty.
+** 
+** So, for these reasons,
+** the ability to use Lua's own
+** allocator was removed
+** as the standard behavior.
+** However, the chance to use
+** Lua's own allocator
+** is given through the
+** following macro:
+** 
+** #define LUA_PCG_USE_LUA_ALLOC
+** 
+** On the other hand,
+** if the library fails
+** randomly by activating this setting,
+** then you are on your own.
+*/
+
+/*
+** The detection for integer emulation
+** is provided automatically by
+** this library.
+** 
+** Mostly targeted to test on C89,
+** emulation can also be forced
+** as indicated below.
+*/
+
+/*
+** Do you want to force
+** 64-bit integer emulation
+** on this library?
+** 
+** #define LUA_PCG_FORCE_U64_EMULATED
+** 
+** Note: forcing 64-bit emulation
+**       also forces 128-bit emulation.
+** 
+*/
+
+/*
+** Do you want to force
+** 128-bit integer emulation
+** on this library?
+** 
+** #define LUA_PCG_FORCE_U128_EMULATED
+*/
+
 #ifndef LUA_PCG_EXPORT
 #ifdef LUA_PCG_BUILD_STATIC
 #define LUA_PCG_EXPORT
