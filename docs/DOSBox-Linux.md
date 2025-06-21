@@ -398,7 +398,7 @@ So, go ahead and launch DOSBox.
 
 > [!TIP]
 > 
-> Like Windows, the filesystem provided by DOSBox is case insensitive on paths. So, the paths `C:\TC-SRC` and `c:\tc-src` are exactly the same within the DOSBox environment.
+> In the same spirit as Windows, the filesystem provided by DOSBox is case insensitive on paths. So, the paths `C:\TC-SRC` and `c:\tc-src` are exactly the same within the DOSBox environment.
 
 You should see this startup screen
 
@@ -444,9 +444,9 @@ You should see this startup screen
 
     We are going to accept the defaults. Then hit the `arrow down` on your keyboard to select `Start Installation` option.
 
-    > [!IMPORTANT]
-    > 
-    > **DO NOT** change defaults. Our `lua-bld.bat` depends on these paths.
+> [!IMPORTANT]
+> 
+> **DO NOT** change defaults. Our `lua-bld.bat` depends on these paths.
 
 12. Once the `Start Installation` option is selected, hit enter:
 
