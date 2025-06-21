@@ -1,6 +1,6 @@
 # Build, run and test lua-pcg on DOS using a Linux host
 
-`lua-pcg` is written in ANSI C. In order to ensure the ability of `lua-pcg` to build, run and pass tests on old systems with limited resources, we are going to setup a combination of Lua 5.1.5 and `lua-pcg` on DOSBox ([https://www.dosbox.com/](https://www.dosbox.com/)), which is an x86 emulator with DOS.
+`lua-pcg` is written in C89. In order to ensure the ability of `lua-pcg` to build, run and pass tests on old systems with limited resources, we are going to setup a combination of Lua 5.1.5 and `lua-pcg` on DOSBox ([https://www.dosbox.com/](https://www.dosbox.com/)), which is an x86 emulator with DOS.
 
 > [!TIP]
 > 
@@ -84,7 +84,7 @@ For this guide, we'll create a separate directory on your home directory.
     cd dosbox
     ```
 
-2. Download a well known C compiler (ANSI C compliant) old enough to work on DOS. For such task, we'll download Borland Turbo C++ 1.01 (a C compiler from 1990) directly from embarcadero museum (*embarcadero bought Borland many years ago*):
+2. Download a well known C compiler (C89 compliant) old enough to work on DOS. For such task, we'll download Borland Turbo C++ 1.01 (a C compiler from 1990) directly from embarcadero museum (*embarcadero bought Borland many years ago*):
 [https://altd.embarcadero.com/download/museum/tcpp101.zip](https://altd.embarcadero.com/download/museum/tcpp101.zip)
 
     * Using `wget`:
@@ -302,7 +302,7 @@ On this step, rather than writing a build command ourselves by hand on DOSBox sh
             # -mh: compile for the Huge memory model (this switch is equivalent to -D__HUGE__). In practice, it uses ptrdiff_t as long (32-bit memory)
             # -nC:\\BLD-LUA: place object files (.obj) on C:\BLD-LUA
             # -I.: include the current directory as include directory
-            # -DLUA_ANSI: build Lua 5.1.5 constrained to use ANSI C
+            # -DLUA_ANSI: build Lua 5.1.5 constrained to use C89
             # -DLUA_PCG_BUILD_STATIC: build lua-pcg as a static library
             # $(basename $lua_file): expands to the current file name
             echo "TCC -c -G -w- -mh -nC:\\BLD-LUA -I. -DLUA_ANSI -DLUA_PCG_BUILD_STATIC $(basename $lua_file)" >> $HOME/dosbox/lua/lua-bld.bat;
