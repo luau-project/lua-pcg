@@ -11,11 +11,7 @@
 
 Written in C89, **lua-pcg** implements methods of the PCG library for Lua. **P**ermuted **C**ongruential **G**enerator (PCG) is a family of simple fast space-efficient statistically good algorithms designed in 2014 by Dr. M.E. O'Neill for random number generation. For a detailed explanation about PCG, visit the authors website [https://www.pcg-random.org/](https://www.pcg-random.org/).
 
-> [!IMPORTANT]
-> 
-> On old compilers that do not provide support to 64-bit or 128-bit integers, `lua-pcg` performs integer arithmetic on software to implement PCG functions.
-> 
-> **Note**: On my country (Brazil), I have a Doctor of Science degree on Mathematics. So, I feel confident enough to take the risk to implement such integer arithmetic using a custom implementation on software written by myself. If you find any bug in the library, being aware of the [known limitations](#known-limitations), feel free to open issues.
+On old C compilers that do not provide support to 64-bit or 128-bit integers, `lua-pcg` performs integer arithmetic on software to implement PCG functions. If you find any bug in the library, being aware of the [known limitations](#known-limitations), feel free to open issues.
 
 > [!NOTE]
 > 
@@ -578,7 +574,7 @@ This class is able to generate pseudo random 32-bit integers and their four byte
 * *Description*: Gets the next 32-bit integer provided by the `rng` instance of [pcg32](#pcg32-1).
 * *Signature*: `rng:next([a [, b]])`
     * *Parameters*:
-        * *rng* (`userdata`): an instance of the [pcg64](#pcg64-1) class;
+        * *rng* (`userdata`): an instance of the [pcg32](#pcg32-1) class;
         * *a* (`integer`):
             * when `a` is provided and `b` is not, a value $n$ is generated such that $0 \leq n < a$;
             * when `a` and `b` are provided, then a value $n$ is generated such that $a \leq n < b$.
