@@ -9,13 +9,13 @@
 
 ## Overview
 
-Written in C89, **lua-pcg** implements methods of the PCG library for Lua. **P**ermuted **C**ongruential **G**enerator (PCG) is a family of simple fast space-efficient statistically good algorithms designed in 2014 by Dr. M.E. O'Neill for random number generation. For a detailed explanation about PCG, visit the authors website [https://www.pcg-random.org/](https://www.pcg-random.org/).
+Written in C89, **lua-pcg** implements methods of the PCG algorithms for Lua. **P**ermuted **C**ongruential **G**enerator (PCG) is a family of simple fast space-efficient statistically good algorithms designed in 2014 by Dr. M.E. O'Neill for random number generation. For a detailed explanation about PCG, visit the authors website [https://www.pcg-random.org/](https://www.pcg-random.org/).
 
-On old C compilers that do not provide support to 64-bit or 128-bit integers, `lua-pcg` performs integer arithmetic on software to implement PCG functions. If you find any bug in the library, being aware of the [known limitations](#known-limitations), feel free to open issues.
+On old C compilers that do not provide support to 64-bit or 128-bit integers, `lua-pcg` performs integer arithmetic on software to implement PCG algorithms. If you find any bug on `lua-pcg`, being aware of the [known limitations](#known-limitations), feel free to open issues.
 
 > [!NOTE]
 > 
-> **Fun fact**: Did you know that `lua-pcg` runs on DOS? Check it out [here](./docs/DOSBox.md)! 
+> **Fun fact**: Did you know that `lua-pcg` runs on DOS? Check it out [here](./docs/DOSBox.md)!
 
 ## Table of Contents
 
@@ -247,7 +247,7 @@ rng:close()
 
 > [!TIP]
 > 
-> Without any arguments, the default `pcg32` constructor uses a rudimentary (*weak*) approach based on time, and addresses of variables, in order to generate different seeds to bootstrap the 32-bit RNG. As a recommended strategy to enhance the process to obtain random seeds, a **C**ryptographically **S**ecure **P**seudo **R**andom **N**umber **G**enerator CSPRNG can be employed to generate the seeds `initstate` and `initseq` (check the `bytes` method of our [lua-cryptorandom](https://github.com/luau-project/lua-cryptorandom#bytes)) library.
+> Without any arguments, the default `pcg32` constructor uses a rudimentary (*weak*) approach based on time, and addresses of variables, in order to generate different seeds to bootstrap the 32-bit RNG. As a recommended strategy to enhance the process to obtain random seeds, a **C**ryptographically **S**ecure **P**seudo **R**andom **N**umber **G**enerator (CSPRNG) can be employed to generate the seeds `initstate` and `initseq` (check the `bytes` method of our [lua-cryptorandom](https://github.com/luau-project/lua-cryptorandom#bytes)) library.
 
 [Back to TOC](#table-of-contents)
 
@@ -463,7 +463,9 @@ rng:close()
 * *Description*: Determines whether the Lua type `lua_Integer` has at least 32-bits or not.
 * *Signature*: `has32bitinteger`
     * *Return* (`boolean`): a flag to tell whether the Lua type `lua_Integer` has at least 32-bits or not.
-* *Remark*: `lua-pcg` is able to run even on a 16-bit operating system. In a 16-bit operating system like DOS, Windows 3.1, etc, the type `lua_Integer` on Lua 5.1 has 16-bits. The primary purpose of this flag is to tell when the output of the methods [next (pcg32)](#next) and [next (pcg64)](#next-1) are including 32-bits of the integer.
+* *Remark*:
+    1. `lua-pcg` is able to run even on a 16-bit operating system. In a 16-bit operating system like DOS, Windows 3.1, etc, the type `lua_Integer` on Lua 5.1 has 16-bits. The primary purpose of this flag is to tell when the output of the methods [next (pcg32)](#next) and [next (pcg64)](#next-1) are including 32-bits of the integer.
+    2. Moreover, see [known limitations](#known-limitations).
 * *Usage*:
     ```lua
     local pcg = require("lua-pcg")
@@ -479,6 +481,8 @@ rng:close()
     if (pcg.has32bitinteger) then
         -- n32 contains the whole 32-bits
         -- of the random 32-bit integer
+
+        -- However, be aware of the known limitations
         print("the generated value contains all the 32-bits:", n32)
     else
         -- n32 is casted to 'lua_Integer',
@@ -493,7 +497,9 @@ rng:close()
 * *Description*: Determines whether the Lua type `lua_Integer` has at least 64-bits or not.
 * *Signature*: `has64bitinteger`
     * *Return* (`boolean`): a flag to tell whether the Lua type `lua_Integer` has at least 64-bits or not.
-* *Remark*: On 32-bit operating system like Windows XP, Debian 32-bits, etc, the type `lua_Integer` on Lua 5.1 has 32-bits. The primary purpose of this flag is to tell when the output of the method [next (pcg64)](#next-1) is including 64-bits of the integer.
+* *Remark*:
+    1. On 32-bit operating system like Windows XP, Debian 32-bits, etc, the type `lua_Integer` on Lua 5.1 has 32-bits. The primary purpose of this flag is to tell when the output of the method [next (pcg64)](#next-1) is including 64-bits of the integer.
+    2. Moreover, see [known limitations](#known-limitations).
 * *Usage*:
     ```lua
     local pcg = require("lua-pcg")
@@ -509,6 +515,8 @@ rng:close()
     if (pcg.has64bitinteger) then
         -- n64 contains the whole 64-bits
         -- of the random 64-bit integer
+
+        -- However, be aware of the known limitations
         print("the generated value contains all the 64-bits:", n64)
     else
         -- n64 is casted to 'lua_Integer',
@@ -579,7 +587,9 @@ This class is able to generate pseudo random 32-bit integers and their four byte
             * when `a` is provided and `b` is not, a value $n$ is generated such that $0 \leq n < a$;
             * when `a` and `b` are provided, then a value $n$ is generated such that $a \leq n < b$.
         * *b* (`integer`): the maximum (exclusive) value allowed for the generated value.
-    * *Remark*: The 32-bit integer generated by `rng` is casted to fit on a Lua integer. Be aware that the vanilla builds of Lua 5.1 and 5.2 on 16-bit operating systems, this value is truncated to 16-bit.
+    * *Remark*: 
+        1. The 32-bit integer generated by `rng` is casted to fit on a Lua integer. Be aware that the vanilla builds of Lua 5.1 and 5.2 on 16-bit operating systems, this value is truncated to 16-bit;
+        2. Moreover, see [known limitations](#known-limitations).
     * *Exceptions*:
         * if only `a` is provided, then an exception is thrown when `a` is out of [1, 4294967295] interval.
         * if `a` and `b` are provided, then an exception is thrown when the difference `b - a` is out of [1, 4294967295] interval.
@@ -647,7 +657,10 @@ This class is able to generate pseudo random 64-bit integers and their eight byt
             * when `a` is provided and `b` is not, a value $n$ is generated such that $0 \leq n < a$;
             * when `a` and `b` are provided, then a value $n$ is generated such that $a \leq n < b$.
         * *b* (`integer`): the maximum (exclusive) value allowed for the generated value.
-    * *Remark*: The 64-bit integer generated by `rng` is casted to fit on a Lua integer. Be aware that the vanilla builds of Lua 5.1 and 5.2 on 32-bit operating systems, this value is truncated to 32-bit. Moreover, Lua 5.3 and 5.4 allows the integer to be 32-bits. Everytime the Lua type `lua_Integer` is shorter than 64-bits in size, the generated value is truncated to fit on a `lua_Integer`.
+    * *Remark*: 
+        1. The 64-bit integer generated by `rng` is casted to fit on a Lua integer. Be aware that the vanilla builds of Lua 5.1 and 5.2 on 32-bit operating systems, this value is truncated to 32-bit. Moreover, Lua 5.3 and 5.4 allows the integer to be 32-bits. Everytime the Lua type `lua_Integer` is shorter than 64-bits in size, the generated value is truncated to fit on a `lua_Integer`;
+        2. Moreover, see [known limitations](#known-limitations).
+
     * *Exceptions*:
         * if `a` and `b` are provided, then an exception is thrown when $a \geq b$.
     * *Return* (`integer`): the generated Lua integer.
@@ -674,9 +687,22 @@ This class is able to generate pseudo random 64-bit integers and their eight byt
 
 ## Known limitations
 
-> [!IMPORTANT]
-> 
-> The integer generated by [pcg32's next](#next) and [pcg64's next](#next-1) might be truncated due the type `lua_Integer` used to represent Lua integers being shorter in size than 32-bit or 64-bit, respectively. The only way to get from `lua-pcg` the same exact data generated by the library of the authors [https://www.pcg-random.org/](https://www.pcg-random.org/) is to call [pcg32's nextbytes](#nextbytes) and  [pcg64's nextbytes](#nextbytes-1) in order to deal with bytes, because bytes are never truncated by `lua-pcg`.
+1. The integer generated by [pcg32's next](#next) and [pcg64's next](#next-1) might be truncated due to the type `lua_Integer` used to represent Lua integers being shorter in size than 32-bit or 64-bit, respectively. The only way to get from `lua-pcg` the same exact data generated by the PCG algorithms provided by the authors [https://www.pcg-random.org/](https://www.pcg-random.org/) is to call [pcg32's nextbytes](#nextbytes) and [pcg64's nextbytes](#nextbytes-1) in order to deal with bytes, because bytes are never truncated by `lua-pcg`;
+
+2. During the testing phase of `lua-pcg`, a strange behavior regarding Lua 5.1 and Lua 5.2, including LuaJIT, was observed: when Lua / LuaJIT was built by a C compiler (e.g.: tested with GCC 13) that supports 64-bit integers, these versions of Lua are unable to handle some 64-bit integers. For instance, if you execute the code `lua -e "print(string.format('%19i', 1760088112211497577))"` for PUC-Lua interpreter or `luajit -e "print(string.format('%19i', 1760088112211497577))"` for LuaJIT, the output is `1760088112211497472`, when obviously it should be `1760088112211497577`. On Lua 5.3 and Lua 5.4, the correct value is printed normally. So, this behavior is a Lua 5.1, Lua 5.2 and LuaJIT limitation.
+
+    These 64-bit integers commented above that Lua 5.1, Lua 5.2 and LuaJIT handle incorrectly is often generated by `lua-pcg`. For example, if you run the following code on the conditions above
+
+    ```lua
+    local pcg = require('lua-pcg')
+    local rng = pcg.pcg64.new('0x979c9a98d84620057d3e9cb6cfe0549b', '0x0000000000000001da3e39cb94b95bdb')
+
+    print(string.format('%19i', rng:next()))
+    ```
+
+    it prints `1760088112211497472`, when it should print the correct value `1760088112211497577`. However, as explained earlier, it is Lua 5.1, Lua 5.2 and LuaJIT limitation, not a `lua-pcg` bug. Internally, the `pcg64` state holds the correct value, but Lua 5.1, Lua 5.2 and LuaJIT are unable to handle it. The only way to always get the correct data is by calling [pcg64's nextbytes](#nextbytes-1), because Lua / LuaJIT is able to treat bytes in the proper manner. The situation described above happens quite often for 64-bit values. So, if you want accuracy regarding the expected output, you shall use [pcg64's nextbytes](#nextbytes-1). On Lua 5.3 and Lua 5.4, this behavior was not observed.
+
+3. A similar situation explained on (2) may occur on Lua 5.1, Lua 5.2 and LuaJIT on 16-bit operating systems with the function [pcg32's next](#next) to handle 32-bit values. However, I don't have access to such a system to reproduce it. Moreover, the amount of people using 16-bit Lua nowadays most likely is not representative, and the chance of them getting hit by this Lua bug is remote.
 
 ## Change log
 
