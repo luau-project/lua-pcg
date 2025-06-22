@@ -1,11 +1,7 @@
 # lua-pcg
 
-> [!IMPORTANT]
-> 
-> **DO NOT** use this library while it is not published on LuaRocks. Currently, it is under active development, and the last bugs are being fixed.
-
 [![CI](https://github.com/luau-project/lua-pcg/actions/workflows/ci.yml/badge.svg)](./.github/workflows/ci.yml)
-<!--[![LuaRocks](https://img.shields.io/luarocks/v/luau-project/lua-pcg?label=LuaRocks&color=2c3e67)](https://luarocks.org/modules/luau-project/lua-pcg)-->
+[![LuaRocks](https://img.shields.io/luarocks/v/luau-project/lua-pcg?label=LuaRocks&color=2c3e67)](https://luarocks.org/modules/luau-project/lua-pcg)
 
 ## Overview
 
