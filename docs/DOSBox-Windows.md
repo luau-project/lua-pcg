@@ -500,7 +500,7 @@ Now, the Lua interpreter has been built merged with `lua-pcg`. Run some basic te
 
 > [!WARNING]
 > 
-> On my machine (*I ran the test suite completely only once*), the whole test suite takes more than eight (8) hours to run completely. Around one (1) hour in the `test32.lua` file to test `pcg32` class, and the rest on `test64.lua` to test `pcg64` class.
+> On my machine (*I ran the test suite completely twice on Linux*), the whole test suite takes more than eight (8) hours to run completely. Around one (1) hour in the `test32.lua` file to test `pcg32` class, and the rest on `test64.lua` to test `pcg64` class.
 
 Since you have been properly warned that testing takes too long, go ahead if you want.
 
