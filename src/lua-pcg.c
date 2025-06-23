@@ -966,7 +966,7 @@ static int lua_pcg_u64_div(lua_pcg_u64 a, lua_pcg_u64 b, lua_pcg_u64 *q, lua_pcg
         /* q_left = (lua_pcg_u128) 1U */
         q_left = lua_pcg_u128_lh(lua_pcg_u64_lh(1U, 0U), lua_pcg_u64_lh(0U, 0U));
 
-        /* q_left = (lua_pcg_u128) UINT64_MAX */
+        /* q_right = (lua_pcg_u128) UINT64_MAX */
         q_right = lua_pcg_u128_lh(lua_pcg_u64_lh(0xFFFFFFFF, 0xFFFFFFFF), lua_pcg_u64_lh(0U, 0U));
 
         do
@@ -2174,7 +2174,7 @@ static int lua_pcg_push_lua_pcg_u128(lua_State *L, lua_pcg_u128 value, int lower
 ***        elements was adapted from Lua PIL:
 **         ( https://www.lua.org/pil/9.3.html )
 */
-void lua_pcg_permute_bytes(lua_pcg_u8 *buffer, int n, lua_pcg_u32 *values, int *count)
+static void lua_pcg_permute_bytes(lua_pcg_u8 *buffer, int n, lua_pcg_u32 *values, int *count)
 {
     int i;
     int last_pos;
