@@ -243,7 +243,7 @@ rng:close()
 
 > [!TIP]
 > 
-> Without any arguments, the default `pcg32` constructor uses a rudimentary (*weak*) approach based on time, and addresses of variables, in order to generate different seeds to bootstrap the 32-bit RNG. As a recommended strategy to enhance the process to obtain random seeds, a **C**ryptographically **S**ecure **P**seudo **R**andom **N**umber **G**enerator (CSPRNG) can be employed to generate the seeds `initstate` and `initseq` (check the `bytes` method of our [lua-cryptorandom](https://github.com/luau-project/lua-cryptorandom#bytes)) library.
+> Without any arguments, the default `pcg32` constructor uses a rudimentary (*weak*) approach based on time, and addresses of variables, in order to generate different seeds to bootstrap the 32-bit RNG. As a recommended strategy to enhance the process to obtain random seeds, a **C**ryptographically **S**ecure **P**seudo **R**andom **N**umber **G**enerator (CSPRNG) can be employed to generate the seeds `initstate` and `initseq` (check the `bytes` method of our [lua-cryptorandom](https://github.com/luau-project/lua-cryptorandom#bytes) library).
 
 [Back to TOC](#table-of-contents)
 
@@ -418,7 +418,7 @@ rng:close()
 
 > [!TIP]
 > 
-> Without any arguments, the default `pcg64` constructor uses a rudimentary (*weak*) approach based on time, and addresses of variables, in order to generate different seeds to bootstrap the 64-bit RNG. As a recommended strategy to enhance the process to obtain random seeds, a CSPRNG can be employed to generate the seeds `initstate` and `initseq` (check the `bytes` method of our [lua-cryptorandom](https://github.com/luau-project/lua-cryptorandom#bytes)) library.
+> Without any arguments, the default `pcg64` constructor uses a rudimentary (*weak*) approach based on time, and addresses of variables, in order to generate different seeds to bootstrap the 64-bit RNG. As a recommended strategy to enhance the process to obtain random seeds, a CSPRNG can be employed to generate the seeds `initstate` and `initseq` (check the `bytes` method of our [lua-cryptorandom](https://github.com/luau-project/lua-cryptorandom#bytes) library).
 
 [Back to TOC](#table-of-contents)
 
@@ -565,13 +565,12 @@ This class is able to generate pseudo random 32-bit integers and their four byte
 #### new
 
 * *Description*: Initializes an instance of the [pcg32](#pcg32-1) class according to optionally provided parameters `initstate` and `initseq`.
-* *Signature*: `rng:new([initstate [, initseq]])`
+* *Signature*: `pcg.pcg32.new([initstate [, initseq]])`
     * *Parameters*:
-        * *rng* (`userdata`): an instance of the [pcg32](#pcg32-1) class;
         * *initstate* (`string | table`): 64-bit integer written as a `string` following the regex pattern `0[xX][0-9a-fA-F]{1,16}` (e.g.: `0x853c49e6748fea9b`), or a `table` representing the 64-bit integer as a byte array (e.g.: `{0x9b, 0xea, 0x8f, 0x74, 0xe6, 0x49, 0x3c, 0x85}` in little-endian byte order);
         * *initseq* (`string | table`): 64-bit integer written as a `string` following the regex pattern `0[xX][0-9a-fA-F]{1,16}` (e.g.: `0xda3e39cb94b95bdb`), or a `table` representing the 64-bit integer as a byte array (e.g.: `{0xdb, 0x5b, 0xb9, 0x94, 0xcb, 0x39, 0x3e, 0xda}` in little-endian byte order).
-    * *Remark*: When any of the optional parameters is not provided, `lua-pcg` generates them through a rudimentary (*weak*) approach based on time, and addresses of variables, in order to bootstrap the 32-bit RNG. As a recommended strategy to enhance the process to obtain random seeds, a CSPRNG can be employed to generate the seeds `initstate` and `initseq` (check the `bytes` method of our [lua-cryptorandom](https://github.com/luau-project/lua-cryptorandom#bytes)) library.
-    * *Return* (`void`).
+    * *Remark*: When any of the optional parameters is not provided, `lua-pcg` generates them through a rudimentary (*weak*) approach based on time, and addresses of variables, in order to bootstrap the 32-bit RNG. As a recommended strategy to enhance the process to obtain random seeds, a CSPRNG can be employed to generate the seeds `initstate` and `initseq` (check the `bytes` method of our [lua-cryptorandom](https://github.com/luau-project/lua-cryptorandom#bytes) library).
+    * *Return* (`userdata`): an instance of the [pcg32](#pcg32-1) class.
 
 #### next
 
@@ -635,13 +634,12 @@ This class is able to generate pseudo random 64-bit integers and their eight byt
 #### new
 
 * *Description*: Initializes an instance of the [pcg64](#pcg64-1) class according to optionally provided parameters `initstate` and `initseq`.
-* *Signature*: `rng:new([initstate [, initseq]])`
+* *Signature*: `pcg.pcg64.new([initstate [, initseq]])`
     * *Parameters*:
-        * *rng* (`userdata`): an instance of the [pcg64](#pcg64-1) class;
         * *initstate* (`string | table`): 128-bit integer written as a `string` following the regex pattern `0[xX][0-9a-fA-F]{1,32}` (e.g.: `0x979c9a98d84620057d3e9cb6cfe0549b`), or a `table` representing the 128-bit integer as a byte array (e.g.: `{0x9b, 0x54, 0xe0, 0xcf, 0xb6, 0x9c, 0x3e, 0x7d, 0x05, 0x20, 0x46, 0xd8, 0x98, 0x9a, 0x9c, 0x97}` in little-endian byte order);
         * *initseq* (`string | table`): 128-bit integer written as a `string` following the regex pattern `0[xX][0-9a-fA-F]{1,32}` (e.g.: `0x0000000000000001da3e39cb94b95bdb`), or a `table` representing the 128-bit integer as a byte array (e.g.: `{0xdb, 0x5b, 0xb9, 0x94, 0xcb, 0x39, 0x3e, 0xda, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}` in little-endian byte order).
-    * *Remark*: When any of the optional parameters is not provided, `lua-pcg` generates them through a rudimentary (*weak*) approach based on time, and addresses of variables, in order to bootstrap the 64-bit RNG. As a recommended strategy to enhance the process to obtain random seeds, a CSPRNG can be employed to generate the seeds `initstate` and `initseq` (check the `bytes` method of our [lua-cryptorandom](https://github.com/luau-project/lua-cryptorandom#bytes)) library.
-    * *Return* (`void`).
+    * *Remark*: When any of the optional parameters is not provided, `lua-pcg` generates them through a rudimentary (*weak*) approach based on time, and addresses of variables, in order to bootstrap the 64-bit RNG. As a recommended strategy to enhance the process to obtain random seeds, a CSPRNG can be employed to generate the seeds `initstate` and `initseq` (check the `bytes` method of our [lua-cryptorandom](https://github.com/luau-project/lua-cryptorandom#bytes) library).
+    * *Return* (`userdata`): an instance of the [pcg64](#pcg64-1) class.
 
 #### next
 
@@ -656,7 +654,6 @@ This class is able to generate pseudo random 64-bit integers and their eight byt
     * *Remark*: 
         1. The 64-bit integer generated by `rng` is casted to fit on a Lua integer. Be aware that the vanilla builds of Lua 5.1 and 5.2 on 32-bit operating systems, this value is truncated to 32-bit. Moreover, Lua 5.3 and 5.4 allows the integer to be 32-bits. Everytime the Lua type `lua_Integer` is shorter than 64-bits in size, the generated value is truncated to fit on a `lua_Integer`;
         2. Moreover, see [known limitations](#known-limitations).
-
     * *Exceptions*:
         * if `a` and `b` are provided, then an exception is thrown when $a \geq b$.
     * *Return* (`integer`): the generated Lua integer.
