@@ -14,6 +14,23 @@
 
 * [Prerequisites](#prerequisites)
 * [Setup the host environment](#setup-the-host-environment)
+    * [Create the layout of directories](#create-the-layout-of-directories)
+    * [Patch Lua 5.1.5 source code](#patch-lua-515-source-code)
+        * [Patch luaconf.h](#patch-luaconfh)
+        * [Patch lua.c to bundle lua-pcg together with Lua](#patch-luac-to-bundle-lua-pcg-together-with-lua)
+    * [Generate the build instructions](#generate-the-build-instructions)
+        * [Merge lua-pcg source code with Lua 5.1.5 source code](#merge-lua-pcg-source-code-with-lua-515-source-code)
+        * [Generate the batch file responsible for the build](#generate-the-batch-file-responsible-for-the-build)
+    * [Configure DOSBox on the Windows host](#configure-dosbox-on-the-windows-host)
+        * [Configure the layout of the keyboard](#configure-the-layout-of-the-keyboard)
+        * [Configure the drive to be mounted on DOSBox](#configure-the-drive-to-be-mounted-on-dosbox)
+        * [Configure the directories to be added to system environment PATH variable on DOSBox](#configure-the-directories-to-be-added-to-system-environment-path-variable-on-dosbox)
+        * [Review of the configuration file](#review-of-the-configuration-file)
+* [Inside DOSBox](#inside-dosbox)
+    * [Install Turbo C++](#install-turbo-c)
+    * [Build Lua 5.1.5 and lua-pcg](#build-lua-515-and-lua-pcg)
+    * [Run simple tests on the Lua interpreter just built](#run-simple-tests-on-the-lua-interpreter-just-built)
+    * [Run lua-pcg test suite](#run-lua-pcg-test-suite)
 
 ## Prerequisites
 
