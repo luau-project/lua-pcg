@@ -486,6 +486,13 @@ rng:close()
         -- 32-bits.
         print("the generated value was truncated:", n32)
     end
+
+    -- free resources
+    -- 
+    -- tip: resources are 
+    -- automatically freed
+    -- at garbage collection
+    rng32:close()
     ```
 
 ### has64bitinteger
@@ -520,6 +527,13 @@ rng:close()
         -- 64-bits.
         print("the generated value was truncated:", n64)
     end
+
+    -- free resources
+    -- 
+    -- tip: resources are 
+    -- automatically freed
+    -- at garbage collection
+    rng64:close()
     ```
 
 ### version
@@ -691,6 +705,8 @@ This class is able to generate pseudo random 64-bit integers and their eight byt
     local rng = pcg.pcg64.new('0x979c9a98d84620057d3e9cb6cfe0549b', '0x0000000000000001da3e39cb94b95bdb')
 
     print(string.format('%19i', rng:next()))
+
+    rng:close()
     ```
 
     it prints `1760088112211497472`, when it should print the correct value `1760088112211497577`. However, as explained earlier, it is Lua 5.1, Lua 5.2 and LuaJIT limitation, not a `lua-pcg` bug. Internally, the `pcg64` state holds the correct value, but Lua 5.1, Lua 5.2 and LuaJIT are unable to handle it. The only way to always get the correct data is by calling [pcg64's nextbytes](#nextbytes-1), because Lua / LuaJIT is able to treat bytes in the proper manner. The situation described above happens quite often for 64-bit values. So, if you want accuracy regarding the expected output, you shall use [pcg64's nextbytes](#nextbytes-1). On Lua 5.3 and Lua 5.4, this behavior was not observed.
