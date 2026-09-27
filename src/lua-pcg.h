@@ -27,7 +27,7 @@
 
 #include <lua.h>
 
-#define LUA_PCG_VERSION "0.0.1"
+#define LUA_PCG_VERSION "0.1.0"
 
 /*
 ** DISCLAIMER:
