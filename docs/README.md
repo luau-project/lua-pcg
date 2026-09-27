@@ -206,4 +206,4 @@ On Windows, we split the guide by toolchain.
 
 ---
 
-[Back to TOC](#table-of-contents) | [Back to home](../)
+[Back to TOC](#table-of-contents) | [Back to home](../README.md)

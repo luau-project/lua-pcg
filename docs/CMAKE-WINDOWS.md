@@ -102,4 +102,4 @@ This page details how to build `lua-pcg` directly from the source code on Window
 
 ---
 
-[Back to TOC](#table-of-contents) | [Back to home](../)
+[Back to TOC](#table-of-contents) | [Back to home](../README.md)

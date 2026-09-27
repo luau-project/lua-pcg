@@ -59,4 +59,4 @@ This page details how to build and install `lua-pcg` directly from the source co
 
 ---
 
-[Back to TOC](#table-of-contents) | [Back to home](../)
+[Back to TOC](#table-of-contents) | [Back to home](../README.md)

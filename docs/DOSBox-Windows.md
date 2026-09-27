@@ -555,4 +555,4 @@ Since you have been properly warned that testing takes too long, go ahead if you
 
 ---
 
-[Back to TOC](#table-of-contents) | [Back to docs](./README.md) | [Back to home](../)
+[Back to TOC](#table-of-contents) | [Back to docs](./README.md) | [Back to home](../README.md)
