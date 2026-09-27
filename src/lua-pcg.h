@@ -1,7 +1,7 @@
 /*
 ** The MIT License (MIT)
 ** 
-** Copyright (c) 2025 luau-project [https://github.com/luau-project/lua-pcg](https://github.com/luau-project/lua-pcg)
+** Copyright (c) 2025 - 2026 luau-project https://github.com/luau-project/lua-pcg
 ** 
 ** Permission is hereby granted, free of charge, to any person obtaining a copy
 ** of this software and associated documentation files (the "Software"), to deal
@@ -100,7 +100,7 @@
 #define LUA_PCG_EXPORT
 #else
 #ifdef LUA_PCG_BUILD_SHARED
-#if defined(_WIN32)
+#if defined(_WIN32) || defined(_WIN64)
 #if defined(__GNUC__) || defined(__MINGW32__)
 #define LUA_PCG_EXPORT __attribute__((dllexport))
 #else
@@ -110,7 +110,7 @@
 #define LUA_PCG_EXPORT __attribute__((visibility("default")))
 #endif
 #else
-#if defined(_WIN32)
+#if defined(_WIN32) || defined(_WIN64)
 #if defined(__GNUC__) || defined(__MINGW32__)
 #define LUA_PCG_EXPORT __attribute__((dllimport))
 #else

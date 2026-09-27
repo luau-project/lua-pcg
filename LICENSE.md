@@ -1,6 +1,6 @@
 The MIT License (MIT)
 
-Copyright (c) 2025 luau-project [https://github.com/luau-project/lua-pcg](https://github.com/luau-project/lua-pcg)
+Copyright (c) 2025 - 2026 luau-project https://github.com/luau-project/lua-pcg
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

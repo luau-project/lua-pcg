@@ -9,6 +9,13 @@ if (pcg == nil) then
     pcg = require("lua-pcg")
 end
 local pcg64 = pcg.pcg64
+local dirsep = package.config:sub(1, 1)
+local next64_filename = ("%s%s%s"):format(
+    "tests", dirsep, "next64.txt"
+)
+local adv64_filename = ("%s%s%s"):format(
+    "tests", dirsep, "adv64.txt"
+)
 
 print()
 print("------------------------------------------")
@@ -157,7 +164,7 @@ local function pcg64_assert_next()
     local rng = pcg64.new(initstate_pcg64, initseq_pcg64)
 
     local i = 1
-    local pcg_file = assert(io.open("tests/next64.txt", "r"), "Unable to open next64.txt file")
+    local pcg_file = assert(io.open(next64_filename, "r"), "Unable to open next64.txt file")
     for line in pcg_file:lines() do
         local bytes = rng:nextbytes()
         if (#bytes ~= 8) then
@@ -191,7 +198,7 @@ local function pcg64_assert_next_from_bytearray()
     local rng = pcg64.new(initstate_pcg64_bytearray, initseq_pcg64_bytearray)
 
     local i = 1
-    local pcg_file = assert(io.open("tests/next64.txt", "r"), "Unable to open next64.txt file")
+    local pcg_file = assert(io.open(next64_filename, "r"), "Unable to open next64.txt file")
     for line in pcg_file:lines() do
         local bytes = rng:nextbytes()
         if (#bytes ~= 8) then
@@ -224,7 +231,7 @@ local function pcg64_assert_advance()
 
     local rng = pcg64.new(initstate_pcg64, initseq_pcg64)
 
-    local pcg_file = assert(io.open("tests/adv64.txt", "r"), "Unable to open adv64.txt file")
+    local pcg_file = assert(io.open(adv64_filename, "r"), "Unable to open adv64.txt file")
     for line in pcg_file:lines() do
 
         local i_str, delta, n = line:match("%[(%d+)%] delta: (0[xX][0-9a-fA-F]+), next: (0[xX][0-9a-fA-F]+)")

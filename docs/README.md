@@ -4,7 +4,10 @@ Welcome to `lua-pcg` documentation! Below, we discuss the process to build `lua-
 
 > [!TIP]
 > 
-> If you are interested to see `lua-pcg` working on DOS, visit this fun fact [here](./DOSBox.md)!
+> * If you are interested to see `lua-pcg` working on DOS, visit this fun fact [here](./DOSBox.md)!
+> * In order to build `lua-pcg` using CMake, check
+>   * [Build on Windows](./CMAKE-WINDOWS.md) or
+>   * [Build on Unix](./CMAKE-UNIX.md).
 
 ## Table of Contents
 
@@ -42,7 +45,7 @@ On Windows, we split the guide by toolchain.
     ```batch
     cd "%TMP%"
     IF EXISTS "lua-pcg\" RMDIR /S /Q "lua-pcg\"
-    git clone --branch=v0.0.1 https://github.com/luau-project/lua-pcg
+    git clone --branch=v0.1.0 https://github.com/luau-project/lua-pcg
     cd lua-pcg
     ```
 
@@ -52,7 +55,7 @@ On Windows, we split the guide by toolchain.
     SET LUA_INCDIR=C:\path to lua\include
     ```
 
-4. Set another variable containing the full path for the import library of Lua. Inside Lua directory, it is usually a file named in one of the following forms: `lua.lib`, `lua5.4.lib`, `lua54.lib` (or `luaXY.lib`, `luaX.Y.lib` where `X` is the major version of Lua and `Y` the minor version). For instance, if the import library is located at `C:\path to lua\lib\lua.lib`, then set
+4. Set another variable containing the full path for the import library of Lua. Inside Lua directory, it is usually a file named in one of the following forms: `lua.lib`, `lua5.5.lib`, `lua55.lib` (or `luaXY.lib`, `luaX.Y.lib` where `X` is the major version of Lua and `Y` the minor version). For instance, if the import library is located at `C:\path to lua\lib\lua.lib`, then set
 
     ```batch
     SET LUA_LIB=C:\path to lua\lib\lua.lib
@@ -84,7 +87,7 @@ On Windows, we split the guide by toolchain.
     ```batch
     cd "%TMP%"
     IF EXISTS "lua-pcg\" RMDIR /S /Q "lua-pcg\"
-    git clone --branch=v0.0.1 https://github.com/luau-project/lua-pcg
+    git clone --branch=v0.1.0 https://github.com/luau-project/lua-pcg
     cd lua-pcg
     ```
 
@@ -94,7 +97,7 @@ On Windows, we split the guide by toolchain.
     SET LUA_INCDIR=C:\path to lua\include
     ```
 
-4. Set another variable containing the full path for the DLL of Lua. Inside Lua directory, it is usually a file named in one of the following forms: `lua.dll`, `lua5.4.dll`, `lua54.dll` (or `luaXY.dll`, `luaX.Y.dll` where `X` is the major version of Lua and `Y` the minor version). For instance, if the DLL is located at `C:\path to lua\bin\lua.dll`, then set
+4. Set another variable containing the full path for the DLL of Lua. Inside Lua directory, it is usually a file named in one of the following forms: `lua.dll`, `lua5.5.dll`, `lua55.dll` (or `luaXY.dll`, `luaX.Y.dll` where `X` is the major version of Lua and `Y` the minor version). For instance, if the DLL is located at `C:\path to lua\bin\lua.dll`, then set
 
     ```batch
     SET LUA_DLL=C:\path to lua\bin\lua.dll
@@ -126,7 +129,7 @@ On Windows, we split the guide by toolchain.
     ```bash
     cd /tmp
     rm -rf ./lua-pcg
-    git clone --branch=v0.0.1 https://github.com/luau-project/lua-pcg
+    git clone --branch=v0.1.0 https://github.com/luau-project/lua-pcg
     cd lua-pcg
     ```
 
@@ -166,7 +169,7 @@ On Windows, we split the guide by toolchain.
     ```bash
     cd /tmp
     rm -rf ./lua-pcg
-    git clone --branch=v0.0.1 https://github.com/luau-project/lua-pcg
+    git clone --branch=v0.1.0 https://github.com/luau-project/lua-pcg
     cd lua-pcg
     ```
 

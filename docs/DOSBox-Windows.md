@@ -119,7 +119,7 @@ For this tutorial, in order to avoid any potential issues, we'll create a separa
 
     ```cmd
     cd %SystemDrive%\dosbox
-    git clone --branch=v0.0.1 --single-branch https://github.com/luau-project/lua-pcg
+    git clone --branch=v0.1.0 --single-branch https://github.com/luau-project/lua-pcg
     ```
 
 7. Create a subdirectory `bld-lua` inside `%SystemDrive%\dosbox` (possibly removing old directories from previous runs) to store object files resulting from the compilation of each C file:
@@ -166,23 +166,23 @@ Alternatively, a quick manner to apply these changes is:
     --- lua-5.1.5/src/luaconf.h	2008-02-11 13:25:08.000000000 -0300
     +++ lua/src/luaconf.h	2025-06-15 12:19:01.460571700 -0300
     @@ -80,7 +80,7 @@
-    ** hierarchy or if you want to install your libraries in
-    ** non-conventional directories.
-    */
+     ** hierarchy or if you want to install your libraries in
+     ** non-conventional directories.
+     */
     -#if defined(_WIN32)
     +#if !defined(_WIN32)
-    /*
-    ** In Windows, any exclamation mark ('!') in the path is replaced by the
-    ** path of the directory of the executable file of the current process.
+     /*
+     ** In Windows, any exclamation mark ('!') in the path is replaced by the
+     ** path of the directory of the executable file of the current process.
     @@ -110,7 +110,7 @@
-    ** CHANGE it if your machine does not use "/" as the directory separator
-    ** and is not Windows. (On Windows Lua automatically uses "\".)
-    */
+     ** CHANGE it if your machine does not use "/" as the directory separator
+     ** and is not Windows. (On Windows Lua automatically uses "\".)
+     */
     -#if defined(_WIN32)
     +#if !defined(_WIN32)
-    #define LUA_DIRSEP	"\\"
-    #else
-    #define LUA_DIRSEP	"/"
+     #define LUA_DIRSEP	"\\"
+     #else
+     #define LUA_DIRSEP	"/"
     ```
 
 2. Change directory to `%SystemDrive%\dosbox\lua` and use `git` to apply the patch above:
@@ -216,23 +216,23 @@ Alternatively, apply these changes using a patch file as follows:
     --- lua-5.1.5/src/lua.c	2007-12-28 12:32:23.000000000 -0300
     +++ lua/src/lua.c	2025-06-15 19:26:39.385371700 -0300
     @@ -16,6 +16,7 @@
-
-    #include "lauxlib.h"
-    #include "lualib.h"
+     
+     #include "lauxlib.h"
+     #include "lualib.h"
     +#include "lua-pcg.h"
-
-
-
+     
+     
+     
     @@ -346,6 +347,9 @@
-    if (argv[0] && argv[0][0]) progname = argv[0];
-    lua_gc(L, LUA_GCSTOP, 0);  /* stop collector during initialization */
-    luaL_openlibs(L);  /* open libraries */
+     if (argv[0] && argv[0][0]) progname = argv[0];
+     lua_gc(L, LUA_GCSTOP, 0);  /* stop collector during initialization */
+     luaL_openlibs(L);  /* open libraries */
     +  lua_pushcfunction(L, luaopen_pcg);
     +  lua_call(L, 0, 1);
     +  lua_setglobal(L, "pcg");
-    lua_gc(L, LUA_GCRESTART, 0);
-    s->status = handle_luainit(L);
-    if (s->status != 0) return 0;
+     lua_gc(L, LUA_GCRESTART, 0);
+     s->status = handle_luainit(L);
+     if (s->status != 0) return 0;
     ```
 
 2. Change directory to `%SystemDrive%\dosbox\lua` and use `git` to apply the patch above:

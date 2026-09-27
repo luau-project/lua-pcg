@@ -1,11 +1,10 @@
 # lua-pcg
 
-[![CI](https://github.com/luau-project/lua-pcg/actions/workflows/ci.yml/badge.svg)](./.github/workflows/ci.yml)
-[![LuaRocks](https://img.shields.io/luarocks/v/luau-project/lua-pcg?label=LuaRocks&color=2c3e67)](https://luarocks.org/modules/luau-project/lua-pcg)
+[![LuaRocks](https://img.shields.io/luarocks/v/luau-project/lua-pcg?label=LuaRocks&color=2c3e67)](https://luarocks.org/modules/luau-project/lua-pcg) [![codecov](https://codecov.io/gh/luau-project/lua-pcg/graph/badge.svg?token=OXDFAJTUO3)](https://codecov.io/gh/luau-project/lua-pcg)
 
 ## Overview
 
-Written in C89, **lua-pcg** implements methods of the PCG algorithms for Lua. **P**ermuted **C**ongruential **G**enerator (PCG) is a family of simple fast space-efficient statistically good algorithms designed in 2014 by Dr. M.E. O'Neill for random number generation. For a detailed explanation about PCG, visit the authors website [https://www.pcg-random.org/](https://www.pcg-random.org/).
+Written in C89, **lua-pcg** implements methods of the PCG algorithms for Lua. **P**ermuted **C**ongruential **G**enerator (PCG) is a family of simple fast space-efficient statistically good algorithms designed in 2014 by Dr. M. E. O'Neill for random number generation. For a detailed explanation about PCG, visit the authors website [https://www.pcg-random.org/](https://www.pcg-random.org/).
 
 On old C compilers that do not provide support to 64-bit or 128-bit integers, `lua-pcg` performs integer arithmetic on software to implement PCG algorithms. If you find any bug on `lua-pcg`, being aware of the [known limitations](#known-limitations), feel free to open issues.
 
@@ -50,7 +49,7 @@ On old C compilers that do not provide support to 64-bit or 128-bit integers, `l
         * [nextbytes](#nextbytes-1)
         * [seed](#seed-1)
 * [Known limitations](#known-limitations)
-* [Change log](#change-log)
+* [History](#history)
 
 ## Installation
 
@@ -66,7 +65,12 @@ luarocks install lua-pcg
 
 ### Alternative installation methods
 
-Are you looking to install `lua-pcg` out of LuaRocks? Check the [docs](./docs/README.md).
+Are you looking to install `lua-pcg` out of LuaRocks?
+
+* CMake:
+    * [Build on Windows](./docs/CMAKE-WINDOWS.md) or
+    * [Build on Unix](./docs/CMAKE-UNIX.md);
+* Building manually: check the [docs](./docs/README.md).
 
 ## Usage
 
@@ -713,6 +717,6 @@ This class is able to generate pseudo random 64-bit integers and their eight byt
 
 3. A similar situation explained on (2) may occur on Lua 5.1, Lua 5.2 and LuaJIT on 16-bit operating systems with the function [pcg32's next](#next) to handle 32-bit values. However, I don't have access to such a system to reproduce it. Moreover, the amount of people using 16-bit Lua nowadays most likely is not representative, and the chance of them getting hit by this Lua bug is remote.
 
-## Change log
+# History
 
-* v0.0.1: Initial release.
+Browse the [CHANGELOG](./CHANGELOG.md)
